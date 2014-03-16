@@ -49,6 +49,7 @@ require ['jquery'], ($) ->
       pipesDown = []
       pipesUp = []
       first = true
+      scoreDiv.html '0'
       requestAnimationFrame f
 
     onAction = ->
