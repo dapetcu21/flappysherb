@@ -1,0 +1,100 @@
+@import '_settings'
+
+normalize-css()
+base()
+
+@font-face
+  font-family: "Flappy Bird"
+  src: url("/img/FB.eot"), url("/img/FB.woff")
+  font-weight: normal
+  font-style: normal
+
+html, body
+  height: 100%
+  width: 100%
+
+.score
+  font-family: 'Flappy Bird';
+  position: relative
+  margin-left: auto
+  margin-right: auto
+  width: 100px
+  top: 100px
+  color: #ffffff
+  font-size: 100px
+  text-shadow: 6px 6px 0px rgba(80, 80, 80, 1)
+
+.gameover.on
+  top: 200px
+
+.gameover
+  width: 172px
+  height: 228px
+  padding: 32px
+  background-image: url("/img/gameover.png")
+  position: relative
+  margin-left: auto
+  margin-right: auto
+  top: -456px
+  transition: top 0.3s ease-out
+  box-sizing: border-box
+
+.gameover div
+  font-family: 'Flappy Bird';
+  color: #ffffff
+  font-size: 16px
+  text-shadow: 4px 4px 0px rgba(80, 80, 80, 0.2)
+  margin-bottom: 8px
+
+.gameover div.title
+  margin-left: auto
+  margin-right: auto
+  font-size: 32px
+  margin-bottom: 16px
+
+
+.container
+  background-color: #6cc5cf
+  position: relative
+  width: 100%
+  height: 100%
+  overflow: hidden
+
+.landscape
+  position: absolute
+  width: 100%
+  height: 235px
+  bottom: 128px
+  background-image: url("/img/background.png")
+  background-repeat: repeat-x
+
+.bird
+  position: absolute
+  left: 40px
+  bottom: 450px
+  width: 92px
+  height: 40px
+  background-image: url("/img/sherb.png")
+  background-size: 100% 100%
+
+.ground
+  position: absolute
+  width: 100%
+  height: 128px
+  bottom: 0px
+  background-image: url("/img/ground.png")
+  background-repeat: repeat-x
+
+.pipe
+  position: absolute
+  width: 138px
+  height: 793px
+  background-image: url("/img/pipe.png")
+
+.pipe.up
+  transform: rotate(180deg)
+
+  
+
+
+
