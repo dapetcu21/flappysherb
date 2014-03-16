@@ -29,37 +29,46 @@ require ['jquery'], ($) ->
     scoreDiv = container.find('.score')
     gameover = container.find('.gameover')
 
+    init = ->
+      gameover.removeClass 'on'
+      yVel = 0
+      yBird = 450
+      xOff = 0
+      running = true
+      distanceToPipe = container.width() + 100
+      scored = 0
+      score = 0
+
+      for i in pipesDown
+        i.remove()
+      for i in pipesUp
+        i.remove()
+
+      pipesX = []
+      pipesY = []
+      pipesDown = []
+      pipesUp = []
+      first = true
+      requestAnimationFrame f
+
     onAction = ->
       if running
         yVel = flapVel
-      else
-        gameover.removeClass 'on'
-        yVel = 0
-        yBird = 450
-        xOff = 0
-        running = true
-        distanceToPipe = container.width()
-        scored = 0
-        score = 0
-
-        for i in pipesDown
-          i.remove()
-        for i in pipesUp
-          i.remove()
-
-        pipesX = []
-        pipesY = []
-        pipesDown = []
-        pipesUp = []
-        first = true
-        requestAnimationFrame f
 
     $(window).keypress (e) ->
       if e.which == 13
-        onAction()
+        if running
+          onAction()
+        else
+          init()
+
 
     $(container).on 'mousedown touchstart', (e) ->
       onAction()
+      e.preventDefault()
+
+    $(gameover).on 'mousedown touchstart', (e) ->
+      init()
       e.preventDefault()
 
     addTemplate = (up, y) ->
@@ -138,7 +147,7 @@ require ['jquery'], ($) ->
         if xBird + wBird >= x and xBird <= x + pipeW
           y = pipesY[i]
           if yBird <= y or yBird + hBird >= y + opening
-            gameOver "SHERB ISN'T SUPPOSED TO GET A THROPHY"
+            gameOver "SHERB ISN'T SUPPOSED TO GET A TROPHY"
 
       bird.css 'bottom', yBird
       ground.css 'background-position-x', xOff
@@ -146,4 +155,4 @@ require ['jquery'], ($) ->
       if running
         requestAnimationFrame f
 
-    onAction()
+    init()
