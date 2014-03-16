@@ -36,7 +36,7 @@ html, body
   margin-left: auto
   margin-right: auto
   top: -456px
-  transition: top 0.3s ease-out
+  transition: all 0.3s ease-out
   box-sizing: border-box
 
 .gameover div
@@ -90,6 +90,14 @@ html, body
   width: 138px
   height: 793px
   background-image: url("/img/pipe.png")
+
+@media screen and (max-device-width: 500px)
+  .gameover
+    transform: scale3d(1.5, 1.5, 1)
+
+@media screen and (max-width: 500px)
+  .gameover
+    transform: scale3d(1.5, 1.5, 1)
 
 .pipe.up
   transform: scaleY(-1)
