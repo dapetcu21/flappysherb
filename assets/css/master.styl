@@ -90,6 +90,13 @@ html, body
   width: 138px
   height: 793px
   background-image: url("/img/pipe.png")
+  transition: bottom 0.3s ease-in
+
+.pipe.down.disappear
+  bottom: -793px !important
+
+.pipe.up.disappear
+  bottom: 1000px !important
 
 @media screen and (max-device-width: 500px)
   .gameover

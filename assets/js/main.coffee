@@ -15,8 +15,10 @@ require ['jquery', 'anim'], ($) ->
     pipeH = 793
     opening = 140
 
-    yVel = yBird = xOff = distanceToPipe = scored = 0
-    score = pipesX = pipesY = pipesDown = pipesUp = 0
+    yVel = yBird = xOff = distanceToPipe = 0
+    scored = score = pipesX = pipesY = 0
+    pipesUp = []
+    pipesDown = []
     running = false
 
     first = true
@@ -33,16 +35,23 @@ require ['jquery', 'anim'], ($) ->
       gameover.removeClass 'on'
       yVel = 0
       yBird = 450
-      xOff = 0
       running = true
       distanceToPipe = container.width() + 100
       scored = 0
       score = 0
 
-      for i in pipesDown
-        i.remove()
-      for i in pipesUp
-        i.remove()
+      clearArray = (v) ->
+        for o, i in v
+          do (o, i) ->
+            setTimeout ->
+              o.addClass 'disappear'
+            , 100 * i
+            setTimeout ->
+              o.remove()
+            , 300 + 100 * i
+      
+      clearArray pipesUp
+      clearArray pipesDown
 
       pipesX = []
       pipesY = []
