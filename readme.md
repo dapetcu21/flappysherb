@@ -1,7 +1,9 @@
 # Flappy Sherb
 
 Flappy Bird... with Sherb
+
 Project done in a few hours as a joke.
+
 Staged at http://flappysherb.herokuapp.com
 
 Setup
