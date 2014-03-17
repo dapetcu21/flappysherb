@@ -66,7 +66,7 @@ require ['jquery', 'anim'], ($) ->
         yVel = flapVel
 
     $(window).keypress (e) ->
-      if e.which == 13
+      if e.which == 13 or e.which == 32
         if running
           onAction()
         else
