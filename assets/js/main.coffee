@@ -72,12 +72,11 @@ require ['jquery', 'anim'], ($) ->
         else
           init()
 
-
-    $(container).on 'mousedown touchstart MSPointerDown', (e) ->
+    container.on 'mousedown touchstart MSPointerDown', (e) ->
       onAction()
       e.preventDefault()
 
-    $(gameover).on 'mousedown touchstart MSPointerDown', (e) ->
+    gameover.on 'mousedown touchstart MSPointerDown', (e) ->
       init()
       e.preventDefault()
 
