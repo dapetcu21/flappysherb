@@ -147,10 +147,19 @@ require ['jquery', 'anim'], ($) ->
         score++
         scoreDiv.html ''+score
 
+      setTransform = (el, x, y, additional) ->
+        if additional?
+          additional = ' ' + additional
+        else
+          additional = ''
+        vendors = ['', '-moz-', '-ms-', '-webkit-', '-o-']
+        for vendor in vendors
+          el.css vendor + 'transform', 'translate3d(' + x + 'px, ' + y + 'px, 0px)' + additional
+
       for o, i in pipesDown
-        o.css 'left', pipesX[i]
+        setTransform o, pipesX[i], 0
       for o, i in pipesUp
-        o.css 'left', pipesX[i]
+        setTransform o, pipesX[i], 0, 'scaleY(-1)'
 
       for x, i in pipesX
         if xBird + wBird >= x and xBird <= x + pipeW
@@ -158,7 +167,7 @@ require ['jquery', 'anim'], ($) ->
           if yBird <= y or yBird + hBird >= y + opening
             gameOver "SHERB ISN'T SUPPOSED TO GET A TROPHY"
 
-      bird.css 'bottom', yBird
+      setTransform bird, 0, -yBird
       ground.css 'background-position-x', xOff
 
       if running
